@@ -9,9 +9,14 @@
     <meta property="og:description" content="HabitFund는 매일매일의 루틴이 핵심적인 정체성으로 자리 잡을 수 있도록 돕습니다. 습관에 가치를 부여하고 이를 쌓아가면서 자기계발을 하고 나눔의 힘을 통해 마음의 안정을 동시에 실현하는 특별한 여정을 선사합니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://habitfund.app">
+    <meta property="og:image" content="https://habitfund.app/assets/logo.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HabitFund - 습관이 기적이 되는 순간">
     <meta name="twitter:description" content="HabitFund는 매일매일의 루틴이 핵심적인 정체성으로 자리 잡을 수 있도록 돕습니다.">
+    <meta name="twitter:image" content="https://habitfund.app/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
     <title>HabitFund - 습관이 기적이 되는 순간</title>
     <style>
         :root {
@@ -63,6 +68,37 @@
             background: #1d1d1f;
             color: white;
             padding: 10px;
+        }
+
+        .logo {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .hero {
@@ -244,6 +280,20 @@
                 padding: 8px 36px 8px 14px;
             }
 
+            .logo {
+                top: 20px;
+                left: 20px;
+            }
+
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-text {
+                font-size: 18px;
+            }
+
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -267,6 +317,10 @@
         }
 
         @media (max-width: 480px) {
+            .logo-text {
+                display: none;
+            }
+
             .hero-title {
                 font-size: 2rem;
             }
@@ -288,6 +342,11 @@
     </style>
 </head>
 <body>
+    <a href="/" class="logo">
+        <img src="assets/logo.png" alt="HabitFund Logo">
+        <span class="logo-text">HabitFund</span>
+    </a>
+
     <div class="lang-switch">
         <select class="lang-selector" id="langSelector">
             <option value="ko">한국어</option>
