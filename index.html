@@ -339,6 +339,149 @@
                 max-width: 260px;
             }
         }
+
+        /* 후원처 등록 섹션 */
+        .donation-register-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-register-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .donation-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .donation-content[dir="rtl"] {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .donation-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+        }
+
+        .donation-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .donation-description {
+            font-size: 1.2rem;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .donation-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .donation-content[dir="rtl"] .donation-benefits {
+            text-align: right;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .benefit-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+
+        .benefit-text {
+            font-size: 0.95rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .donation-form-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .donation-form-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .donation-form-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .donation-register-section {
+                padding: 60px 20px;
+            }
+
+            .donation-title {
+                font-size: 2rem;
+            }
+
+            .donation-description {
+                font-size: 1.1rem;
+            }
+
+            .donation-benefits {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .donation-content[dir="rtl"] .donation-benefits {
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -402,106 +545,50 @@
         </div>
     </section>
 
-    <script>
-        const translations = {
-            ko: {
-                'title': 'HabitFund - 습관이 기적이 되는 순간',
-                'description': 'HabitFund는 매일매일의 루틴이 핵심적인 정체성으로 자리 잡을 수 있도록 돕습니다. 습관에 가치를 부여하고 이를 쌓아가면서 자기계발을 하고 나눔의 힘을 통해 마음의 안정을 동시에 실현하는 특별한 여정을 선사합니다.',
-                'keywords': '습관,루틴,기부,후원,자기계발,갓생,습관만들기,목표달성,미라클모닝,마음챙김,동기부여,성장,Habit,Routine',
-                'hero-title': 'HabitFund : 성장이 사회적 가치를 만나는 곳.',
-                'hero-subtitle': 'HabitFund는 매일매일의 루틴이 핵심적인 정체성으로 자리 잡을 수 있도록 돕습니다. 습관에 가치를 부여하고 이를 쌓아가면서 자기계발을 하고 나눔의 힘을 통해 마음의 안정을 동시에 실현하는 특별한 여정을 선사합니다.',
-                'app-store-button': 'App Store에서 다운로드'
-            },
-            en: {
-                'title': 'HabitFund - Where Personal Growth Meets Social Value',
-                'description': 'HabitFund helps you internalize daily routines until they become a core part of your identity. By assigning tangible value to your habits and accumulating them, we empower your path to both self-improvement and mental well-being through the power of giving.',
-                'keywords': 'Habit,Routine,Tracker,Social,Good,Giving,Donation,Growth,Self-improvement,Mindfulness,Identity',
-                'hero-title': 'HabitFund: Where Personal Growth Meets Social Value.',
-                'hero-subtitle': 'HabitFund helps you internalize daily routines until they become a core part of your identity. By assigning tangible value to your habits and accumulating them, we empower your path to both self-improvement and mental well-being through the power of giving.',
-                'app-store-button': 'Download on the App Store'
-            },
-            de: {
-                'title': 'HabitFund - Wo persönliches Wachstum auf sozialen Wert trifft',
-                'description': 'HabitFund hilft Ihnen dabei, tägliche Routinen zu verinnerlichen, bis sie zu einem festen Bestandteil Ihrer Identität werden. Indem Sie Ihren Gewohnheiten einen greifbaren Wert zuweisen, ebnen wir den Weg für Ihre persönliche Weiterentwicklung und Ihr geistiges Wohlbefinden.',
-                'keywords': 'Gewohnheit,Routine,Wachstum,Support,Sozial,Fokus,Disziplin,Erfolg,Wohlbefinden,Habit,Routine',
-                'hero-title': 'HabitFund: Wo persönliches Wachstum auf sozialen Wert trifft.',
-                'hero-subtitle': 'HabitFund hilft Ihnen dabei, tägliche Routinen zu verinnerlichen, bis sie zu einem festen Bestandteil Ihrer Identität werden. Indem Sie Ihren Gewohnheiten einen greifbaren Wert zuweisen, ebnen wir den Weg für Ihre persönliche Weiterentwicklung und Ihr geistiges Wohlbefinden – unterstützt durch die Kraft, zum gesellschaftlichen Wachstum beizutragen.',
-                'app-store-button': 'Laden im App Store'
-            },
-            ru: {
-                'title': 'HabitFund - Где личностный рост встречает социальную ценность',
-                'description': 'HabitFund помогает закрепить ежедневные привычки как часть вашей личности. Придавая ценность каждому шагу, мы поддерживаем ваш путь к саморазвитию и внутреннему спокойствию через помощь обществу.',
-                'keywords': 'привычки,рутина,развитие,дисциплина,цель,успех,помощь,осознанность,Habit,Routine',
-                'hero-title': 'HabitFund: Где личностный рост встречает социальную ценность.',
-                'hero-subtitle': 'HabitFund помогает закрепить ежедневные привычки как часть вашей личности. Придавая ценность каждому шагу, мы поддерживаем ваш путь к саморазвитию и внутреннему спокойствию через помощь обществу.',
-                'app-store-button': 'Загрузить в App Store'
-            },
-            es: {
-                'title': 'HabitFund - Donde el crecimiento personal se une al valor social',
-                'description': 'HabitFund te ayuda a interiorizar tus rutinas diarias hasta que se conviertan en una parte esencial de tu identidad. Al asignar un valor tangible a tus hábitos y acumularlos, potenciamos tu camino hacia la mejora personal y el bienestar mental.',
-                'keywords': 'hábitos,rutina,crecimiento,apoyo,social,bienestar,disciplina,ayuda,meta,Habit,Routine',
-                'hero-title': 'HabitFund: Donde el crecimiento personal se une al valor social.',
-                'hero-subtitle': 'HabitFund te ayuda a interiorizar tus rutinas diarias hasta que se conviertan en una parte esencial de tu identidad. Al asignar un valor tangible a tus hábitos y acumularlos, potenciamos tu camino hacia la mejora personal y el bienestar mental a través del poder de contribuir al crecimiento de la sociedad.',
-                'app-store-button': 'Descargar en App Store'
-            },
-            ar: {
-                'title': 'HabitFund - حيث يلتقي النمو الشخصي بالقيمة الاجتماعية',
-                'description': 'يساعدك HabitFund على تبني العادات اليومية حتى تصبح جزءاً أساسياً من هويتك. من خلال إعطاء قيمة ملموسة لعاداتك، نمهد لك الطريق نحو تطوير الذات والراحة النفسية، عبر قوة المساهمة في نمو المجتمع.',
-                'keywords': 'عادات,روتين,نمو,تطوير,دعم,مساهمة,ذات,انضباط,نجاح,صحة,Habit,Routine',
-                'hero-title': 'HabitFund: حيث يلتقي النمو الشخصي بالقيمة الاجتماعية.',
-                'hero-subtitle': 'يساعدك HabitFund على تبني العادات اليومية حتى تصبح جزءاً أساسياً من هويتك. من خلال إعطاء قيمة ملموسة لعاداتك، نمهد لك الطريق نحو تطوير الذات والراحة النفسية، عبر قوة المساهمة في نمو المجتمع.',
-                'app-store-button': 'تنزيل من App Store'
-            },
-            it: {
-                'title': 'HabitFund - Dove la crescita personale incontra il valore sociale',
-                'description': 'HabitFund ti aiuta a interiorizzare le tue routine quotidiane fino a farle diventare parte integrante della tua identità. Dando un valore tangibile alle tue abitudini e accumulandole, promuoviamo il tuo percorso di miglioramento personale e benessere mentale.',
-                'keywords': 'abitudini,routine,crescita,sociale,benessere,disciplina,supporto,successo,identità,Habit,Routine',
-                'hero-title': 'HabitFund: Dove la crescita personale incontra il valore sociale.',
-                'hero-subtitle': 'HabitFund ti aiuta a interiorizzare le tue routine quotidiane fino a farle diventare parte integrante della tua identità. Dando un valore tangibile alle tue abitudini e accumulandole, promuoviamo il tuo percorso di miglioramento personale e benessere mentale attraverso il potere del sostegno alla crescita comune.',
-                'app-store-button': 'Scarica su App Store'
-            },
-            id: {
-                'title': 'HabitFund - Tempat pertumbuhan pribadi bertemu kontribusi sosial',
-                'description': 'HabitFund membantu Anda menanamkan rutinitas harian hingga menjadi bagian inti dari identitas Anda. Dengan memberikan nilai nyata pada setiap kebiasaan, kami mendukung perjalanan pengembangan diri dan ketenangan batin Anda.',
-                'keywords': 'kebiasaan,rutinitas,tumbuh,sosial,kontribusi,disiplin,sukses,diri,mental,Habit,Routine',
-                'hero-title': 'HabitFund: Tempat pertumbuhan pribadi bertemu kontribusi sosial.',
-                'hero-subtitle': 'HabitFund membantu Anda menanamkan rutinitas harian hingga menjadi bagian inti dari identitas Anda. Dengan memberikan nilai nyata pada setiap kebiasaan, kami mendukung perjalanan pengembangan diri dan ketenangan batin Anda melalui kekuatan untuk berkontribusi pada kemajuan masyarakat.',
-                'app-store-button': 'Unduh di App Store'
-            },
-            ja: {
-                'title': 'HabitFund - 個人の成長が社会の成長に繋がる場所',
-                'description': 'HabitFundは、日々のルーチンをあなた自身のアイデンティティとして定着させるためのパートナーです。習慣に形ある価値を与え、それを積み重ねていくことで、自己啓発だけでなく、「支援」という形で社会の発展に貢献し、心の安らぎを同時に実現します。',
-                'keywords': '習慣,ルーチン,目標達成,自己啓発,支援,社会貢献,成長,マインドフルネス,継続,ハビット,Routine,Habit',
-                'hero-title': 'HabitFund：個人の成長が社会の成長に繋がる場所。',
-                'hero-subtitle': 'HabitFundは、日々のルーチンをあなた自身のアイデンティティとして定着させるためのパートナーです。習慣に形ある価値を与え、それを積み重ねていくことで、自己啓発だけでなく、「支援」という形で社会の発展に貢献し、心の安らぎを同時に実現する特別な体験をお届けします。',
-                'app-store-button': 'App Storeからダウンロード'
-            },
-            zh: {
-                'title': 'HabitFund - 让个人成长与社会价值在此交汇',
-                'description': 'HabitFund 致力于帮助您将每日习惯内化为核心自我认同的一部分。通过为习惯赋予有形价值并不断积累，您不仅能在自我提升中获得成就感，还能通过"社会支持"的力量，在助力社会成长的同时，实现内心的平静与平衡。',
-                'keywords': '习惯,养成,打卡,自我提升,社会价值,成长,自律,心理健康,支持,贡献,Habit,Routine',
-                'hero-title': 'HabitFund：让个人成长与社会价值在此交汇。',
-                'hero-subtitle': 'HabitFund 致力于帮助您将每日习惯内化为核心自我认同的一部分。通过为习惯赋予有形价值并不断积累，您不仅能在自我提升中获得成就感，还能通过"社会支持"的力量，在助力社会成长的同时，实现内心的平静与平衡。',
-                'app-store-button': '在 App Store 下载'
-            },
-            th: {
-                'title': 'HabitFund - พื้นที่ที่การเติบโตส่วนบุคคลพบกับคุณค่าทางสังคม',
-                'description': 'HabitFund ช่วยให้กิจวัตรประจำวันกลายเป็นตัวตนของคุณ มอบคุณค่าให้กับนิสัยของคุณเพื่อการพัฒนาตนเองและความสงบทางจิตใจ ผ่านพลังแห่งการแบ่งปันเพื่อสังคม',
-                'keywords': 'นิสัย,กิจวัตร,พัฒนาตนเอง,เป้าหมาย,วินัย,ความสำเร็จ,สุขภาพจิต,การแบ่งปัน,Habit,Routine',
-                'hero-title': 'HabitFund: พื้นที่ที่การเติบโตส่วนบุคคลพบกับคุณค่าทางสังคม',
-                'hero-subtitle': 'HabitFund ช่วยให้กิจวัตรประจำวันกลายเป็นตัวตนของคุณ มอบคุณค่าให้กับนิสัยของคุณเพื่อการพัฒนาตนเองและความสงบทางจิตใจ ผ่านพลังแห่งการแบ่งปันเพื่อสังคม',
-                'app-store-button': 'ดาวน์โหลดบน App Store'
-            },
-            fr: {
-                'title': 'HabitFund - Là où l\'épanouissement personnel rencontre la valeur sociale',
-                'description': 'HabitFund vous aide à intérioriser vos routines quotidiennes jusqu\'à ce qu\'elles deviennent une partie intégrante de votre identité. En attribuant une valeur tangible à vos habitudes, nous facilitons votre chemin vers le développement personnel et le bien-être mental.',
-                'keywords': 'habitude,routine,croissance,soutien,social,bien-être,discipline,aide,but,Habit,Routine',
-                'hero-title': 'HabitFund : Là où l\'épanouissement personnel rencontre la valeur sociale.',
-                'hero-subtitle': 'HabitFund vous aide à intérioriser vos routines quotidiennes jusqu\'à ce qu\'elles deviennent une partie intégrante de votre identité. En attribuant une valeur tangible à vos habitudes, nous facilitons votre chemin vers le développement personnel et le bien-être mental, tout en vous donnant le pouvoir de soutenir la croissance de la société.',
-                'app-store-button': 'Télécharger dans l\'App Store'
-            }
-        };
+    <!-- 후원처 등록 섹션 -->
+    <section class="donation-register-section">
+        <div class="donation-content">
+            <div class="donation-icon">💝</div>
+            <h2 class="donation-title" data-i18n="donation-title">후원처를 등록해주세요</h2>
+            <p class="donation-description" data-i18n="donation-description">
+                여러분이 알고 계신 후원하면 좋을 곳을 등록해주세요. 
+                등록된 후원처는 앱에서 후원 목록에 나타나 다른 사용자들도 쉽게 후원할 수 있습니다.
+            </p>
+            
+            <div class="donation-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3 class="benefit-title" data-i18n="benefit1-title">간편한 후원 기록</h3>
+                    <p class="benefit-text" data-i18n="benefit1-text">앱에서 바로 후원처를 선택하고 기록할 수 있습니다</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌱</div>
+                    <h3 class="benefit-title" data-i18n="benefit2-title">새로운 후원처 발견</h3>
+                    <p class="benefit-text" data-i18n="benefit2-text">다양한 후원이 필요한 곳을 발견하고 기여할 수 있습니다</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3 class="benefit-title" data-i18n="benefit3-title">함께 만드는 선한 영향력</h3>
+                    <p class="benefit-text" data-i18n="benefit3-text">커뮤니티와 함께 의미 있는 변화를 만들어갑니다</p>
+                </div>
+            </div>
 
+            <a href="https://forms.gle/cwziraYh9ZY3TjiNA" class="donation-form-button" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                </svg>
+                <span data-i18n="donation-button">후원처 등록하기</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- 번역 데이터 로드 -->
+    <script src="assets/translations.js"></script>
+    
+    <script>
         // 초기 언어 설정 (브라우저 언어 감지 또는 로컬 스토리지)
         const getInitialLang = () => {
             const savedLang = localStorage.getItem('habitfund-lang');
@@ -511,23 +598,32 @@
             return browserLang.startsWith('ko') ? 'ko' : 'en';
         };
 
-        let currentLang = getInitialLang();
-
         // 언어 변경 함수
         const setLanguage = (lang) => {
-            currentLang = lang;
+            // 번역 데이터가 로드되지 않았으면 리턴
+            if (!translations || Object.keys(translations).length === 0) {
+                console.warn('Translations not loaded yet');
+                return;
+            }
+            
+            // 해당 언어가 없으면 리턴
+            if (!translations[lang]) {
+                console.warn(`Translation for language '${lang}' not found`);
+                return;
+            }
+            
             localStorage.setItem('habitfund-lang', lang);
             
             // HTML lang 속성 업데이트
             document.documentElement.setAttribute('lang', lang);
             
             // 타이틀 업데이트
-            if (translations[lang] && translations[lang]['title']) {
+            if (translations[lang]['title']) {
                 document.title = translations[lang]['title'];
             }
             
             // 메타 태그 업데이트
-            if (translations[lang] && translations[lang]['description']) {
+            if (translations[lang]['description']) {
                 // description 메타 태그
                 let metaDesc = document.querySelector('meta[name="description"]');
                 if (metaDesc) {
@@ -568,30 +664,49 @@
             // 모든 번역 가능한 요소 업데이트
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
+                if (translations[lang][key]) {
                     element.textContent = translations[lang][key];
                 }
             });
             
             // 아랍어의 경우 RTL 설정
             const heroContent = document.querySelector('.hero-content');
+            const donationContent = document.querySelector('.donation-content');
             if (lang === 'ar') {
-                heroContent.setAttribute('dir', 'rtl');
+                if (heroContent) heroContent.setAttribute('dir', 'rtl');
+                if (donationContent) donationContent.setAttribute('dir', 'rtl');
             } else {
-                heroContent.removeAttribute('dir');
+                if (heroContent) heroContent.removeAttribute('dir');
+                if (donationContent) donationContent.removeAttribute('dir');
             }
             
             // 셀렉터 값 업데이트
-            document.getElementById('langSelector').value = lang;
+            const langSelector = document.getElementById('langSelector');
+            if (langSelector) langSelector.value = lang;
         };
 
         // 언어 셀렉터 이벤트
-        document.getElementById('langSelector').addEventListener('change', (e) => {
-            setLanguage(e.target.value);
-        });
+        const setupLanguageSelector = () => {
+            const langSelector = document.getElementById('langSelector');
+            if (langSelector) {
+                langSelector.addEventListener('change', (e) => {
+                    setLanguage(e.target.value);
+                });
+            }
+        };
 
-        // 초기 언어 적용
-        setLanguage(currentLang);
+        // 페이지 로드시 초기 언어 적용
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                setupLanguageSelector();
+                const lang = getInitialLang();
+                setLanguage(lang);
+            });
+        } else {
+            setupLanguageSelector();
+            const lang = getInitialLang();
+            setLanguage(lang);
+        }
     </script>
 </body>
 </html>
