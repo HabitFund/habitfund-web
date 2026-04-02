@@ -585,10 +585,9 @@
         </div>
     </section>
 
-    <!-- 번역 데이터 로드 -->
-    <script src="assets/translations.js"></script>
-    
     <script>
+        let translations = {};
+
         // 초기 언어 설정 (브라우저 언어 감지 또는 로컬 스토리지)
         const getInitialLang = () => {
             const savedLang = localStorage.getItem('habitfund-lang');
@@ -695,17 +694,22 @@
             }
         };
 
-        // 페이지 로드시 초기 언어 적용
+        // 번역 데이터 로드 후 초기 언어 적용
+        const init = () => {
+            fetch('assets/translations.json')
+                .then(res => res.json())
+                .then(data => {
+                    translations = data;
+                    setupLanguageSelector();
+                    setLanguage(getInitialLang());
+                })
+                .catch(err => console.error('Failed to load translations:', err));
+        };
+
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                setupLanguageSelector();
-                const lang = getInitialLang();
-                setLanguage(lang);
-            });
+            document.addEventListener('DOMContentLoaded', init);
         } else {
-            setupLanguageSelector();
-            const lang = getInitialLang();
-            setLanguage(lang);
+            init();
         }
     </script>
 </body>
