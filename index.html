@@ -606,6 +606,52 @@
                 font-size: 1.9rem;
             }
         }
+
+        /* ── Footer ── */
+        .site-footer {
+            background: #0f0f14;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .site-footer p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 12px;
+        }
+
+        .site-footer .footer-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .site-footer .footer-links a {
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .site-footer .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .site-footer .footer-links .sep {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 12px;
+        }
+
+        .site-footer .copyright {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -798,6 +844,17 @@
             </div>
         </div>
     </section>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="sep">|</span>
+            <a href="support.html">Support</a>
+            <span class="sep">|</span>
+            <a href="mailto:stay@foolishmind.dev">stay@foolishmind.dev</a>
+        </div>
+        <p class="copyright">© 2026 HabitFund · foolishmind.dev · All rights reserved.</p>
+    </footer>
 
     <script>
         let translations = {};

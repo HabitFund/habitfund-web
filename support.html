@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HabitFund Support Center – Contact us and find answers to frequently asked questions.">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
+    <title>Support – HabitFund</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #0f0f14;
+            color: #e8e8ed;
+            line-height: 1.7;
+        }
+
+        /* ── Nav ── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 15, 20, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 48px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover { transform: scale(1.05); }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: white; }
+        .back-link::before { content: '← '; }
+
+        /* ── Layout ── */
+        .content-wrap {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 72px 24px 96px;
+        }
+
+        .page-header {
+            margin-bottom: 56px;
+        }
+
+        .page-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .page-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ── Contact card ── */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            padding: 36px 40px;
+            margin-bottom: 64px;
+        }
+
+        .contact-card h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-card h2 .icon {
+            font-size: 1.2rem;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .contact-row:last-child { margin-bottom: 0; }
+
+        .contact-label {
+            color: rgba(255, 255, 255, 0.4);
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+
+        .contact-value {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .contact-value a {
+            color: #a78bfa;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .contact-value a:hover { color: #c4b5fd; }
+
+        .response-note {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        /* ── FAQ ── */
+        .faq-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 28px;
+            letter-spacing: -0.02em;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .faq-item {
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            transition: border-color 0.2s;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(102, 126, 234, 0.35);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.97rem;
+            font-weight: 500;
+            font-family: inherit;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover { color: white; }
+
+        .faq-question .chevron {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 18px;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-question .chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 24px 20px;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.93rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-answer a {
+            color: #a78bfa;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .faq-answer a:hover {
+            color: #c4b5fd;
+            text-decoration: underline;
+        }
+
+        /* ── Footer ── */
+        .page-footer {
+            text-align: center;
+            padding: 32px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 13px;
+        }
+
+        .page-footer .footer-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .page-footer .footer-links a {
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .page-footer .footer-links a:hover { color: rgba(255, 255, 255, 0.7); }
+
+        .page-footer .footer-links .sep {
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .page-footer .copyright {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            .nav { padding: 14px 20px; }
+            .page-title { font-size: 1.8rem; }
+            .content-wrap { padding: 48px 20px 72px; }
+            .contact-card { padding: 28px 24px; }
+            .contact-row { flex-direction: column; gap: 2px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="logo">
+            <img src="assets/logo.png" alt="HabitFund Logo">
+            <span class="logo-text">HabitFund</span>
+        </a>
+        <a href="/" class="back-link">Back to Home</a>
+    </nav>
+
+    <main class="content-wrap">
+        <header class="page-header">
+            <h1 class="page-title">Support Center</h1>
+            <p class="page-subtitle">We're here to help you build better habits and make a positive impact.</p>
+        </header>
+
+        <!-- Contact -->
+        <div class="contact-card">
+            <h2><span class="icon">📬</span> Contact Us</h2>
+            <div class="contact-row">
+                <span class="contact-label">Email</span>
+                <span class="contact-value"><a href="mailto:stay@foolishmind.dev">stay@foolishmind.dev</a></span>
+            </div>
+            <div class="contact-row">
+                <span class="contact-label">Languages</span>
+                <span class="contact-value">English, Korean (other languages handled via translator)</span>
+            </div>
+            <p class="response-note">We usually respond within 24–48 hours.</p>
+        </div>
+
+        <!-- FAQ -->
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Where is my data stored?
+                    <span class="chevron">›</span>
+                </button>
+                <div class="faq-answer">
+                    All your habit data is stored locally on your device. If you enable iCloud sync,
+                    it is securely backed up and synced via your personal Apple iCloud account.
+                    We do not have access to your data.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    I want to request a refund for a Tip (In-App Purchase).
+                    <span class="chevron">›</span>
+                </button>
+                <div class="faq-answer">
+                    All payments are processed through Apple's In-App Purchase system, so we are unable
+                    to issue refunds directly. Please visit
+                    <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>
+                    to request a refund from Apple.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    iCloud sync is not working. What should I do?
+                    <span class="chevron">›</span>
+                </button>
+                <div class="faq-answer">
+                    Please check the following:
+                    <br><br>
+                    1. Make sure you are signed in to the <strong>same iCloud account</strong> on all your devices.<br>
+                    2. Go to <strong>Settings → [Your Name] → iCloud</strong> and confirm that <strong>iCloud Drive</strong> is turned on.<br>
+                    3. Scroll down and make sure <strong>HabitFund</strong> is enabled in the iCloud app list.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    How can I suggest a new feature?
+                    <span class="chevron">›</span>
+                </button>
+                <div class="faq-answer">
+                    We love feedback! Send your ideas to
+                    <a href="mailto:stay@foolishmind.dev">stay@foolishmind.dev</a>.
+                    We are always looking for ways to improve HabitFund for our global community.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    How do I report a bug?
+                    <span class="chevron">›</span>
+                </button>
+                <div class="faq-answer">
+                    Please email us at <a href="mailto:stay@foolishmind.dev">stay@foolishmind.dev</a>
+                    with a description of the issue, your device model, and iOS version.
+                    Screenshots or screen recordings are very helpful.
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <span class="sep">|</span>
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="sep">|</span>
+            <a href="mailto:stay@foolishmind.dev">stay@foolishmind.dev</a>
+        </div>
+        <p class="copyright">© 2026 HabitFund · foolishmind.dev · All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                // close all
+                document.querySelectorAll('.faq-item.open').forEach(el => {
+                    el.classList.remove('open');
+                    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                // open clicked if it was closed
+                if (!isOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
