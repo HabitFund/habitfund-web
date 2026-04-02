@@ -448,6 +448,40 @@
             height: 24px;
         }
 
+        .donation-view-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: #667eea;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid #667eea;
+        }
+
+        .donation-view-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            background: #f5f7fa;
+        }
+
+        .donation-view-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .donation-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         @media (max-width: 768px) {
             .donation-register-section {
                 padding: 60px 20px;
@@ -468,6 +502,17 @@
 
             .donation-content[dir="rtl"] .donation-benefits {
                 text-align: center;
+            }
+
+            .donation-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .donation-form-button,
+            .donation-view-button {
+                justify-content: center;
+                width: 100%;
             }
         }
 
@@ -781,15 +826,25 @@
                 </div>
             </div>
 
-            <a href="https://forms.gle/cwziraYh9ZY3TjiNA" class="donation-form-button" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="12" y1="18" x2="12" y2="12"></line>
-                    <line x1="9" y1="15" x2="15" y2="15"></line>
-                </svg>
-                <span data-i18n="donation-button">후원처 등록하기</span>
-            </a>
+            <div class="donation-buttons">
+                <a href="https://forms.gle/cwziraYh9ZY3TjiNA" class="donation-form-button" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                    <span data-i18n="donation-button">후원처 등록하기</span>
+                </a>
+
+                <a href="contributors.html" class="donation-view-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span data-i18n="view-contributors-button">등록된 후원처 보기</span>
+                </a>
+            </div>
         </div>
     </section>
 
